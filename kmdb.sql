@@ -124,7 +124,7 @@ CREATE TABLE movies (
     title TEXT,
     year_released INTEGER,
     rating TEXT,
-    studio_id TEXT
+    studio_id INTEGER
 );
 
 CREATE TABLE studios (
@@ -150,30 +150,21 @@ CREATE TABLE characters (
 -- Use hard-coded foreign key IDs when necessary
 -- TODO!
 
-INSERT INTO movies (
-    title,
-    year_released,
-    rating,
-    studio_id
+-- Inserting data into studios table
+INSERT INTO studios (
+    studio_name
 )
 VALUES (
-    "Batman Begins",
-    2005,
-    "PG-13",  
-    "Warner Bros."
-),
-(
-    "The Dark Knight",
-    2008,
-    "PG-13",  
-    "Warner Bros."
-),
-(
-    "The Dark Knight Rises",
-    2012,
-    "PG-13",  
     "Warner Bros."
 );
+
+-- Inserting data into movies table
+INSERT INTO movies 
+    (title, year_released, rating, studio_id)
+VALUES 
+    ("Batman Begins", 2005, "PG-13", 1),
+    ("The Dark Knight", 2008, "PG-13", 1),
+    ("The Dark Knight Rises", 2012, "PG-13", 1);
 
 -- Prints a header for the movies output
 .print "Movies"
@@ -183,8 +174,8 @@ VALUES (
 -- The SQL statement for the movies output
 -- TODO!
 
-SELECT title, year_released, rating, studio_id
-FROM movies;
+SELECT title, year_released, rating, studio_name
+FROM movies INNER JOIN studios ON studios.id = movies.studio_id;
 
 -- Prints a header for the cast output
 .print ""
