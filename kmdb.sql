@@ -134,14 +134,14 @@ CREATE TABLE studios (
 
 CREATE TABLE actors (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    first_name TEXT,
-    last_name TEXT
+    actor_first_name TEXT,
+    actor_last_name TEXT
 );
 
 CREATE TABLE characters (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    first_name TEXT,
-    last_name TEXT,
+    character_first_name TEXT,
+    character_last_name TEXT,
     actor_id INTEGER,
     movie_id INTEGER
 );
@@ -166,6 +166,42 @@ VALUES
     ("The Dark Knight", 2008, "PG-13", 1),
     ("The Dark Knight Rises", 2012, "PG-13", 1);
 
+-- Inserting data into actors table
+INSERT INTO actors 
+    (actor_first_name, actor_last_name)
+VALUES 
+    ("Christian", "Bale"),
+    ("Michael", "Caine"),
+    ("Liam", "Neeson"),
+    ("Katie", "Holmes"),
+    ("Gary", "Oldman"),
+    ("Heath", "Ledger"),
+    ("Aaron", "Eckhart"),
+    ("Maggie", "Gyllenhaal"),
+    ("Tom", "Hardy"),
+    ("Joseph", "Gordon-Levitt"),
+    ("Anne", "Hathaway");
+
+-- Inserting data into characters table
+INSERT INTO characters 
+    (character_first_name, character_last_name, actor_id, movie_id)
+VALUES 
+    ("Bruce", "Wayne", 1, 1),
+    ("Bruce", "Wayne", 1, 2),
+    ("Bruce", "Wayne", 1, 3),
+    ("Alfred", "", 2, 1),
+    ("Alfred", "", 2, 2),
+    ("Ra's", "Al Ghul", 3, 1),
+    ("Rachel", "Dawes", 4, 1),
+    ("Rachel", "Dawes", 8, 2),
+    ("Commissioner", "Gordon", 5, 1),
+    ("Commissioner", "Gordon", 5, 3),
+    ("Joker", "", 6, 2),
+    ("Harvey", "Dent", 7, 2),
+    ("Bane", "", 9, 3),
+    ("John", "Blake", 10, 3),
+    ("Selina", "Kyle", 11, 3);
+
 -- Prints a header for the movies output
 .print "Movies"
 .print "======"
@@ -183,7 +219,5 @@ FROM movies INNER JOIN studios ON studios.id = movies.studio_id;
 .print "========"
 .print ""
 
-
 -- The SQL statement for the cast output
 -- TODO!
-
